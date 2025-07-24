@@ -6,7 +6,7 @@ toc: true
 format: html
 execute:
   echo: true
-  eval: false
+  eval: true
 ---
 
 # Plan for Today
@@ -16,6 +16,11 @@ Today, we're going to learn how to train supervised ML models for classification
 The pipelines we will use today are *simple* by design, and we will begin to build in additional steps to make our classifiers 'robust' in the next seminar. Today, we will touch on (1) fitting models, (2) calculating in-sample evaluation metrics, and (3) in-sample model evaluation. Tomorrow, we will look a train/validation/test sets, cross-validation, regularisation, and other facets of robust ML.
 
 First, let's install and load our required R and python packages.
+
+```{r}
+options(repos = c(CRAN = "https://cloud.r-project.org"))
+```
+
 
 ```{r}
 # Install all required packages at once
@@ -108,7 +113,7 @@ str(mtcars_data)
 
 Let's take our data and try to train a multivariate OLS model with `mpg` as the response and `wt` and `hp` as our explanatory variables.
 
-```{r}
+```{r eval = FALSE}
 lm_model <- lm(mpg ~ wt + hp, data = mtcars_data, na.action = na.fail)
 lm_model
 ```
